@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysqldump-s3
+  namespace: mynamespace
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysqldump-s3
+          image: pelotech/mysqldump-s3
+          env:
+            - name: DB_HOST
+              value: blahblahblah
+            - name: DB_NAME
+              value: mydb
+            - name: DB_USER
+              value: myuser
+            - name: DB_PASS
+              value: mypassword
+            - name: BUCKET
+              value: mybucket
+            - name: OBJECT_NAME
+              value: myobjectname
+            - name: AWS_ACCESS_KEY_ID
+              value: awsaccesskeyid
+            - name: AWS_SECRET_ACCESS_KEY
+              value: awssecretaccesskey
+            - name: AWS_DEFAULT_REGION
+              value: us-west-2
+      restartPolicy: Never
