@@ -46,3 +46,5 @@ else
   echo "ACTION must be either 'import' or 'export'"
   exit 1
 fi
+[[ -f $OBJECT_NAME ]] && rm $OBJECT_NAME
+
