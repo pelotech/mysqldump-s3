@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: mysqldump-s3
+  name: mysqldump-s3-import
   namespace: mynamespace
 spec:
   template:
@@ -11,21 +11,23 @@ spec:
           image: pelotech/mysqldump-s3
           env:
             - name: DB_HOST
-              value: blahblahblah
+              value: host
             - name: DB_NAME
-              value: mydb
+              value: db
             - name: DB_USER
-              value: myuser
+              value: user
             - name: DB_PASS
-              value: mypassword
+              value: password
             - name: BUCKET
-              value: mybucket
+              value: s3://buack
             - name: OBJECT_NAME
-              value: myobjectname
+              value: dump.sql
             - name: AWS_ACCESS_KEY_ID
-              value: awsaccesskeyid
+              value: "awskey"
             - name: AWS_SECRET_ACCESS_KEY
-              value: awssecretaccesskey
+              value: "awssecret"
             - name: AWS_DEFAULT_REGION
               value: us-west-2
+            - name: ACTION
+              value: import
       restartPolicy: Never

@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysqldump-s3-export
+  namespace: mynamespace
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysqldump-s3
+          image: pelotech/mysqldump-s3
+          env:
+            - name: DB_HOST
+              value: host
+            - name: DB_NAME
+              value: db
+            - name: DB_USER
+              value: user
+            - name: DB_PASS
+              value: pass
+            - name: BUCKET
+              value: s3://buck
+            - name: OBJECT_NAME
+              value: dump.sql
+            - name: AWS_ACCESS_KEY_ID
+              value: "key"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "acccesskey"
+            - name: AWS_DEFAULT_REGION
+              value: us-west-2
+            - name: ACTION
+              value: export
+      restartPolicy: Never
