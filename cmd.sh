@@ -30,6 +30,7 @@ export () {
     --user=$DB_USER \
     --password=$DB_PASS \
     --result-file=$OBJECT_NAME \
+    --routines \
     --add-drop-table \
     --verbose
 
