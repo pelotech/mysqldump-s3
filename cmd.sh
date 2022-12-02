@@ -29,10 +29,10 @@ export () {
     --host=$DB_HOST \
     --user=$DB_USER \
     --password=$DB_PASS \
+    --result-file=$OBJECT_NAME \
     --routines \
     --add-drop-table \
-    --verbose \
-    | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' > $OBJECT_NAME
+    --verbose
 
   echo "Backing up to $BUCKET as $OBJECT_NAME"
   aws s3 cp $OBJECT_NAME $BUCKET/$OBJECT_NAME
