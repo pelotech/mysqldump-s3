@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - name: mysqldump-s3
-          image: pelotech/mysqldump-s3
+          image: ghcr.io/pelotech/mysqldump-s3
           env:
             - name: DB_HOST
               value: host
